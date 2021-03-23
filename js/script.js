@@ -119,7 +119,7 @@ icons.forEach((icon) => {
 
   const html = `
   <div>
-    <i class="${family} ${prefix} ${name}"></i>
+    <i class="${family} ${prefix}${name}"></i>
     <div class="title">${name}</div>
   </div>
   `;
@@ -136,13 +136,7 @@ const colors = [
   "green"
 ];
 
-const categories = [];
-
-icons.forEach((item, i) => {
-  if ( categories.includes(item.category) == false) {
-    categories.push(item.category);
-  }
-});
+const categories = getCategories(icons);
 
 const iconsColored = icons.map((icon) => {
   const categoryIndex = categories.indexOf(icon.category);
@@ -192,7 +186,7 @@ function printIcons(target, icons){
 
     const html = `
     <div>
-      <i class="${family} ${prefix} ${name}" style="color: ${color}"></i>
+      <i class="${family} ${prefix}${name}" style="color: ${color}"></i>
       <div class="title">${name}</div>
     </div>
     `;
@@ -201,6 +195,14 @@ function printIcons(target, icons){
   });
 }
 
-function getCategories(){
+function getCategories(icons){
+  const categories = [];
 
+  icons.forEach((item, i) => {
+    if ( categories.includes(item.category) == false) {
+      categories.push(item.category);
+    }
+  });
+
+  return categories;
 }
