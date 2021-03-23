@@ -153,20 +153,7 @@ const iconsColored = icons.map((icon) => {
   return icon;
 });
 
-iconsColored.forEach((icon) => {
-
-  const {name, family, prefix, color} = icon;
-
-  const html = `
-  <div>
-    <i class="${family} ${prefix} ${name}" style="color: ${color}"></i>
-    <div class="title">${name}</div>
-  </div>
-  `;
-
-  iconsContainer.append(html);
-
-});
+  printIcons(iconsContainer, iconsColored);
 
 // 3. Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
